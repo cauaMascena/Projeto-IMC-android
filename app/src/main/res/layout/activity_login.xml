@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_header"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@color/corDasOndas"
+        >
+
+        <TextView
+            android:id="@+id/text_view_titulo"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:text="Health Calc"
+            android:layout_marginVertical="10dp"
+            android:layout_marginStart="10dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:gravity="end"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="32dp"
+            />
+        <ImageView
+            android:id="@+id/header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/simbolo"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/text_view_titulo"
+            android:layout_alignEnd="@+id/text_view_titulo"
+            android:layout_marginEnd="24dp"
+            />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/wave_top"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:src="@drawable/ic_wave_top"
+        android:scaleType="fitXY"
+        android:layout_below="@+id/rl_header"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/wave_top"
+        android:layout_above="@+id/wave_bottom"
+        android:orientation="vertical"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textSize="32dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Faça login para continuar"/>
+
+        <android.inputmethodservice.ExtractEditText
+            android:id="@+id/e_mail"
+            style="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view_titulo"
+            android:hint="E-mail"
+            android:background="@drawable/contorno_simples"
+            android:drawableStart="@drawable/img_carta"/>
+
+        <android.inputmethodservice.ExtractEditText
+            android:id="@+id/senha"
+            style="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view_titulo"
+            android:background="@drawable/contorno_simples"
+            android:hint="Senha"
+            android:drawableStart="@drawable/cadeado_img"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Entrar"
+            android:background="@drawable/contorno_simples"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="end">
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lembre-me"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Esqueci a senha"
+                android:textColor="@color/corDasOndas"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Não tem uma conta?" />
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Criar uma conta agora"
+                android:textColor="@color/corDasOndas"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/wave_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_wave_botton"
+        android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="Desenvolvido por DS2M"/>
+
+</RelativeLayout>
