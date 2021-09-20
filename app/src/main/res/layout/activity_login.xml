@@ -77,6 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/text_view_titulo"
             android:hint="E-mail"
+            android:layout_marginTop="18dp"
             android:background="@drawable/contorno_simples"
             android:drawableStart="@drawable/img_carta"/>
 
@@ -88,12 +89,14 @@
             android:layout_below="@id/text_view_titulo"
             android:background="@drawable/contorno_simples"
             android:hint="Senha"
+            android:layout_marginTop="18dp"
             android:drawableStart="@drawable/cadeado_img"/>
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Entrar"
+            android:layout_marginTop="24dp"
             android:background="@drawable/contorno_simples"
             />
 
@@ -101,11 +104,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:layout_marginTop="24dp"
             android:gravity="end">
 
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
                 android:text="Lembre-me"/>
 
             <TextView
