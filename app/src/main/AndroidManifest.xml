@@ -11,7 +11,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".DashView_Activity"></activity>
         <activity android:name=".PerfilActivity" />
-        <activity android:name=".NovoUsuarioActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

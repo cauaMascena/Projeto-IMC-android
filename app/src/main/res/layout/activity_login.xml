@@ -123,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:text="Não tem uma conta?" />
             <TextView
-
+                android:id="@+id/tv_nova_conta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Criar uma conta agora"

@@ -52,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/cadeado_img"
                 android:text=" Dados para autenticação"
+                android:layout_marginTop="18dp"
                 android:textSize="22dp" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -133,6 +134,33 @@
                     android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sexo"
+                android:textSize="22dp"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+            <RadioButton
+                android:id="@+id/rdg3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Masculino"/>
+            <RadioButton
+                android:id="@+id/rdg3btn2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Feminino" />
+        </LinearLayout>
 
     </LinearLayout>
 
