@@ -9,6 +9,8 @@ import android.view.MenuItem
 import android.widget.EditText
 import com.example.projetoimc.R
 import com.example.projetoimc.model.Usuario
+import com.example.projetoimc.utils.convertStringToLocalDate
+import kotlinx.android.synthetic.main.activity_perfil.*
 import java.time.LocalDate
 import java.util.*
 
@@ -20,7 +22,7 @@ class NovoUsuario : AppCompatActivity() {
     lateinit var editProfi: EditText
     lateinit var editAltura: EditText
     lateinit var editNasc: EditText
-    lateinit var editSex: EditText
+    lateinit var radioSex: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +34,7 @@ class NovoUsuario : AppCompatActivity() {
         editProfi = findViewById(R.id.edit_profissao)
         editAltura = findViewById(R.id.edit_altura)
         editNasc = findViewById(R.id.edit_data_nascimento)
+        radioSex = findViewById(R.id)
 
         supportActionBar!!.title = "Novo Usuario"
 //
@@ -75,6 +78,7 @@ class NovoUsuario : AppCompatActivity() {
 
        if (ValidarCampos()) {
            //Criar o objeto usuario
+               val nascimento = convertStringToLocalDate(edit_data_nascimento.text.toString())
 
                val usuario = Usuario(
                    1,
@@ -83,8 +87,13 @@ class NovoUsuario : AppCompatActivity() {
                    editSenha.text.toString(),
                    0,
                    editAltura.text.toString().toDouble(),
-                   LocalDate.of(1999,11,21),
-                   editProfi.text.toString()
+                   LocalDate.of(
+                       nascimento.year,
+                       nascimento.monthValue,
+                       nascimento.dayOfMonth,
+                       ),
+                   editProfi.text.toString(),
+                   if (radioF.isChecked) 'F' else 'M'
 
 
                )
@@ -109,18 +118,27 @@ class NovoUsuario : AppCompatActivity() {
         var valido = true
         if (editEmail.text.isEmpty()) {
             editEmail.error = "E-mail é obrigatório"
+            valido = false
         }
         if (editSenha.text.isEmpty()) {
             editSenha.error = "Senha é obrigatório"
+            valido = false
+
         }
         if (editNome.text.isEmpty()) {
             editNome.error = "Nome é obrigatório"
+            valido = false
+
         }
         if (editProfi.text.isEmpty()) {
             editProfi.error = "Profissão é obrigatória"
+            valido = false
+
         }
         if (editAltura.text.isEmpty()) {
             editAltura.error = "Altura é obrigatória"
+            valido = false
+
         }
         return valido
     }
