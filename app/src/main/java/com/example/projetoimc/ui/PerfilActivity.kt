@@ -1,15 +1,12 @@
-package com.example.projetoimc
+package com.example.projetoimc.ui
 
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
-import android.widget.RadioGroup
-import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_perfil.*
+import com.example.projetoimc.R
 import java.util.*
 
 class PerfilActivity : AppCompatActivity() {
