@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import android.widget.RadioButton
+import android.widget.Toast
 import com.example.projetoimc.R
 import com.example.projetoimc.model.Usuario
 import com.example.projetoimc.utils.convertStringToLocalDate
@@ -91,7 +92,7 @@ class NovoUsuario : AppCompatActivity() {
                    editEmail.text.toString(),
                    editSenha.text.toString(),
                    0,
-                   editAltura.text.toString().toDouble(),
+                   editAltura.text.toString().toFloat(),
                    LocalDate.of(
                        nascimento.year,
                        nascimento.monthValue,
@@ -99,8 +100,6 @@ class NovoUsuario : AppCompatActivity() {
                        ),
                    editProfi.text.toString(),
                    if (radioF.isChecked) 'F' else 'M'
-
-
                )
 
            //Salvar o registro
@@ -113,8 +112,20 @@ class NovoUsuario : AppCompatActivity() {
 
            // Vamos criar o objeto que permitirá a edição dos dados
            // do arquivo SharePreferences
-           val editor = dados;
+           val editor = dados.edit()
+           editor.putInt("id", usuario.id)
+           editor.putString("nome", usuario.nome)
+           editor.putString("email", usuario.email)
+           editor.putString("senha", usuario.senha)
+           editor.putInt("peso", usuario.peso)
+           editor.putFloat("altura", usuario.altura)
+           editor.putString("dataNascimento", usuario.dataNascimento.toString())
+           editor.putString("profissao", usuario.profissao)
+           editor.putString("sexo", usuario.sexo.toString())
+           editor.apply()
        }
+
+        Toast.makeText(this, "Usuário  Cadastrado", Toast.LENGTH_SHORT).show()
 
         return true
     }

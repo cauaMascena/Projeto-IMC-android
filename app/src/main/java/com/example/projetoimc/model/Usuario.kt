@@ -8,7 +8,7 @@ data class Usuario(
     var email: String,
     var senha: String,
     var peso: Int,
-    var altura: Double,
+    var altura: Float,
     var dataNascimento: LocalDate,
     var profissao: String,
     var sexo: Char
