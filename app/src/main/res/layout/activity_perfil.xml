@@ -160,12 +160,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"/>
             <RadioButton
-                android:id="@+id/rdg3"
+                android:id="@+id/radio_masculino"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Masculino"/>
             <RadioButton
-                android:id="@+id/rdg3btn2"
+                android:id="@+id/radio_feminino"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Feminino" />

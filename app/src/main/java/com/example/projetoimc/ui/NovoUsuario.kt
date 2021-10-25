@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
+import android.widget.RadioButton
 import com.example.projetoimc.R
 import com.example.projetoimc.model.Usuario
 import com.example.projetoimc.utils.convertStringToLocalDate
@@ -22,7 +23,9 @@ class NovoUsuario : AppCompatActivity() {
     lateinit var editProfi: EditText
     lateinit var editAltura: EditText
     lateinit var editNasc: EditText
-    lateinit var radioSex: EditText
+    lateinit var radioF: RadioButton
+    lateinit var radioM: RadioButton
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +37,9 @@ class NovoUsuario : AppCompatActivity() {
         editProfi = findViewById(R.id.edit_profissao)
         editAltura = findViewById(R.id.edit_altura)
         editNasc = findViewById(R.id.edit_data_nascimento)
-        radioSex = findViewById(R.id)
+        radioF = findViewById(R.id.radio_feminino)
+        radioM = findViewById(R.id.radio_masculino)
+
 
         supportActionBar!!.title = "Novo Usuario"
 //
