@@ -129,6 +129,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_data_nascimento"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="5"
@@ -142,6 +143,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
+            android:id="@+id/sexo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -153,6 +155,7 @@
                 android:textSize="22dp"/>
 
             <RadioGroup
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"/>
