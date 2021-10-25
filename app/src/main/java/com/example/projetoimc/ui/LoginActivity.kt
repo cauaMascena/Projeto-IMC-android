@@ -15,7 +15,7 @@ class LoginActivity : AppCompatActivity()
 
         val tvHello = findViewById<TextView>(R.id.tv_criar_conta)
         tvHello.setOnClickListener {
-            val abrirActivityCadastro = Intent(this, PerfilActivity::class.java)
+            val abrirActivityCadastro = Intent(this, NovoUsuario::class.java)
             //contexto e "destino" ||||| ::class.java - instancia a classe
 
             startActivity(abrirActivityCadastro)

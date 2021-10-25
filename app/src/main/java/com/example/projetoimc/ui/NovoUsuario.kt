@@ -1,15 +1,18 @@
 package com.example.projetoimc.ui
 
 import android.app.DatePickerDialog
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import com.example.projetoimc.R
+import com.example.projetoimc.model.Usuario
+import java.time.LocalDate
 import java.util.*
 
-class PerfilActivity : AppCompatActivity() {
+class NovoUsuario : AppCompatActivity() {
 
     lateinit var editEmail: EditText
     lateinit var editSenha: EditText
@@ -23,9 +26,9 @@ class PerfilActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfil)
 
+        editNome = findViewById(R.id.edit_nome)
         editEmail = findViewById(R.id.edit_email)
         editSenha = findViewById(R.id.edit_senha)
-        editNome = findViewById(R.id.edit_nome)
         editProfi = findViewById(R.id.edit_profissao)
         editAltura = findViewById(R.id.edit_altura)
         editNasc = findViewById(R.id.edit_data_nascimento)
@@ -65,29 +68,43 @@ class PerfilActivity : AppCompatActivity() {
 
         menuInflater.inflate(R.menu.menu_salvar, menu)
 
-        return true
+        return true;
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        if (editEmail.text.isEmpty()){
-            editEmail.error = "O e-mail é obrigatório!"
-        }
-        if (editSenha.text.isEmpty()){
-            editSenha.error = "A senha é obrigatória!"
-        }
-        if (editNome.text.isEmpty()){
-            editNome.error = "O nome é obrigatório!"
-        }
-        if (editProfi.text.isEmpty()){
-            editProfi.error = "A profissão é obrigatória!"
-        }
-        if (editAltura.text.isEmpty()){
-            editAltura.error = "A altura é obrigatória!"
-        }
+       if (ValidarCampos()) {
+           //Criar o objeto usuario
+
+               val usuario = Usuario(
+                   1,
+                   editNome.text.toString(),
+                   editEmail.text.toString(),
+                   editSenha.text.toString(),
+                   0,
+                   editAltura.text.toString().toDouble(),
+                   LocalDate.of(1999,11,21),
+                   editProfi.text.toString()
+
+
+               )
+
+           //Salvar o registro
+           //Em um SharePreferences
+
+           //A instrução abaixo irá criar um
+           //arquivo sharePreferences se não existir
+           //Se existir ele será aberto para edição
+           val dados = getSharedPreferences("usuario", Context.MODE_PRIVATE)
+
+           // Vamos criar o objeto que permitirá a edição dos dados
+           // do arquivo SharePreferences
+           val editor = dados;
+       }
 
         return true
     }
+
     fun ValidarCampos() : Boolean {
         var valido = true
         if (editEmail.text.isEmpty()) {
