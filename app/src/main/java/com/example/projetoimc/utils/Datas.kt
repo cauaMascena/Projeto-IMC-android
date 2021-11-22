@@ -1,14 +1,39 @@
 package com.example.projetoimc.utils
 
 import java.time.LocalDate
+import java.time.Period
 import java.time.format.DateTimeFormatter
 
 fun convertStringToLocalDate(brazilDate: String) : LocalDate {
 
-    val dateFormatterFromBrazil = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+    val dateFormatterFromBrazil = DateTimeFormatter
+        .ofPattern("dd/MM/yyyy")
 
-    val LocalDateFormat = LocalDate.parse(brazilDate, dateFormatterFromBrazil)
+    val localDateFormat = LocalDate
+        .parse(brazilDate, dateFormatterFromBrazil)
 
-    return LocalDateFormat
+    return localDateFormat
 
+}
+
+fun calcularIdade(dataNascimento: String): Int {
+
+    //obter a data atual (hoje)
+    val hoje  = LocalDate.now()
+
+    // Converter a data nascimento em um LocalDate
+    // Extrair a data em um array
+    val nascimentoArray = dataNascimento.split("").toTypedArray()
+
+    val nascimento = LocalDate
+                .of(
+                        nascimentoArray[0].toInt(),
+                        nascimentoArray[1].toInt(),
+                        nascimentoArray[2].toInt())
+
+    //obter a idade
+    val idade = Period
+        .between(nascimento, hoje).years
+
+    return idade
 }

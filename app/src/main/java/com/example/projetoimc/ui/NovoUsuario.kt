@@ -2,19 +2,23 @@ package com.example.projetoimc.ui
 
 import android.app.DatePickerDialog
 import android.content.Context
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.EditText
-import android.widget.RadioButton
-import android.widget.Toast
+import android.widget.*
 import com.example.projetoimc.R
 import com.example.projetoimc.model.Usuario
 import com.example.projetoimc.utils.convertStringToLocalDate
 import kotlinx.android.synthetic.main.activity_perfil.*
 import java.time.LocalDate
 import java.util.*
+
+const val CODE_IMAGE = 100
 
 class NovoUsuario : AppCompatActivity() {
 
@@ -26,6 +30,9 @@ class NovoUsuario : AppCompatActivity() {
     lateinit var editNasc: EditText
     lateinit var radioF: RadioButton
     lateinit var radioM: RadioButton
+    lateinit var tvTrocarFoto: TextView
+    lateinit var ivFotoPerfil: ImageView
+    var imageBitmap: Bitmap? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,37 +47,81 @@ class NovoUsuario : AppCompatActivity() {
         editNasc = findViewById(R.id.edit_data_nascimento)
         radioF = findViewById(R.id.radio_feminino)
         radioM = findViewById(R.id.radio_masculino)
+        tvTrocarFoto = findViewById(R.id.tv_trocar_foto)
+        ivFotoPerfil = findViewById(R.id.iv_foto_perfil)
 
 
         supportActionBar!!.title = "Novo Usuario"
 //
+        // Criar o calendário
         val calendario = Calendar.getInstance()
-
         val ano = calendario.get(Calendar.YEAR)
         val mes = calendario.get(Calendar.MONTH)
         val dia = calendario.get(Calendar.DAY_OF_MONTH)
 
-        val etDataNacimento = findViewById<EditText>(R.id.edit_data_nascimento)
-
-        etDataNacimento.setOnClickListener {
-            val dp = DatePickerDialog(
-                this,
+        editNasc.setOnClickListener {
+            val dpd = DatePickerDialog(this,
                 DatePickerDialog.OnDateSetListener { view, _ano, _mes, _dia ->
-                    etDataNacimento.setText(
-                        "$_dia/${_mes + 1}/$_ano"
-                    )
-                },
-                ano,
-                mes,
-                dia
+
+                    var diaFinal = _dia
+                    var mesFinal = _mes + 1
+
+                    var mesString = "$mesFinal"
+                    var diaString = "$diaFinal"
+
+                    if (mesFinal < 10) {
+                        mesString = "0$mesFinal"
+                    }
+
+                    if (diaFinal < 10) {
+                        diaString = "0$diaFinal"
+                    }
+
+                    Log.i("xpto", _dia.toString())
+                    Log.i("xpto", _mes.toString())
+
+                    editNasc.setText("$diaString/$mesString/$_ano")
+                }, ano, mes, dia
             )
-            dp.show()
+            dpd.show()
+        }
+
+    }
+    //criando calendário
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, imagem: Intent?) {
+        super.onActivityResult(requestCode, resultCode, imagem)
+
+        if (requestCode == CODE_IMAGE && resultCode == -1){
+            // Recuperar a imagem do stream
+            val fluxoImagem = contentResolver.openInputStream(imagem!!.data!!)
+
+            // Converter os bits em um bitmap
+            imageBitmap = BitmapFactory.decodeStream(fluxoImagem)
+
+            // Colocar o bitmap no ImageView
+            ivFotoPerfil.setImageBitmap(imageBitmap)
+
         }
 
     }
 
+    private fun abrirGaleria() {
 
-    //criando calendário
+        // Abrir a galeria de imagens do dispositivo
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "image/*"
+
+        // Abrir a Activity responsável por exibir as imagens
+        // Esta Activity retornará o conteúdo selecionado
+        // para o nosso app
+        startActivityForResult(
+            Intent.createChooser(intent,
+                "Escolha uma foto"),
+            CODE_IMAGE
+        )
+
+    }
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
