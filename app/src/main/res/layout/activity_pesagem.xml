@@ -1,24 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.PesagemActivity">
+    tools:context=".ui.PesagemActivity"
+    android:orientation="vertical"
+    android:padding="25dp">
 
-    <LinearLayout
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="125dp"
+        android:src="@drawable/imgexercicio"/>
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp">
+        android:layout_marginTop="20dp"
+        android:text="Vamos nos pesar?"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="25sp"/>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/imgExercicio"
-            />
-    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Mantenha seu peso sempre atualizado, assim você poderá acompanhar sua evolução"
+        android:drawableStart="@drawable/pesssoa"
+        android:drawablePadding="15dp"
+        android:textColor="@color/colorAccent" />
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dados da sua pesagem"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:letterSpacing="0.05"
+        android:textSize="16sp"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data da pesagem:"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_datapesagem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:text=""
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Nivel de atividade"
+        app:layout_constraintStart_toStartOf="@+id/tv_datapesagem"
+        app:layout_constraintTop_toBottomOf="@+id/tv_datapesagem" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="92dp"
+        android:entries="@array/niveis"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seu novo peso"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/et_peso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/corDasOndas"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btn_registrarpeso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar peso"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18dp" />
+
+
+</LinearLayout>

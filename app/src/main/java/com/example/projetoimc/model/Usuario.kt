@@ -9,7 +9,9 @@ data class Usuario(
     var senha: String,
     var peso: Int,
     var altura: Float,
+    var pesagem: Pesagem,
     var dataNascimento: LocalDate,
+    var dataPesagem: Pesagem,
     var profissao: String,
     var sexo: Char
 

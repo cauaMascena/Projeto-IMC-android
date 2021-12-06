@@ -1,10 +1,13 @@
 package com.example.projetoimc.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.projetoimc.R
+import com.example.projetoimc.repository.PesagemRepository
 import com.example.projetoimc.utils.convertBase64ToBitmap
 
 class DashView_Activity : AppCompatActivity() {
@@ -16,6 +19,8 @@ class DashView_Activity : AppCompatActivity() {
     lateinit var tvIdade: TextView
     lateinit var tvAltura: TextView
     lateinit var ivPerfil: ImageView
+    lateinit var  cardNovaPesagem: TextView
+    lateinit var cardHistorico: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +34,22 @@ class DashView_Activity : AppCompatActivity() {
         tvIdade = findViewById(R.id.tv_dash_idade)
         tvImc = findViewById(R.id.tv_dash_imc)
         ivPerfil = findViewById(R.id.iv_dash_foto_perfil)
+        cardNovaPesagem = findViewById(R.id.card_pesar_agora)
+        cardHistorico = findViewById(R.id.card_historico)
+
+        cardNovaPesagem.setOnClickListener{
+            val intent = Intent(this, PesagemActivity::class.java)
+            startActivity(intent)
+        }
+
+        cardHistorico.setOnClickListener{
+            val pesagemRepository = PesagemRepository(this)
+            val listaPesagem = pesagemRepository.getListaPesagem()
+
+            for (p in listaPesagem) {
+                Log.i("xpto", "${p.dataPesagem} - ${p.peso}")
+            }
+        }
 
         carregarDashboard()
     }
